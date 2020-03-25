@@ -27,7 +27,7 @@ django-smtp-ssl==1.0
 django-taggit==0.22.2
 django-uuslug==1.1.8
 django-widget-tweaks==1.4.5
-djangorestframework==3.8.2
+djangorestframework==3.9.1
 gunicorn==19.9.0
 httplib2==0.11.3
 idna==2.7
