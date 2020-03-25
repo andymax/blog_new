@@ -1,0 +1,13 @@
+<!--标签-->
+<div class="row tag-content">
+
+                    <div class="col-xs-12 tag-yun">
+                        {% for tag in tags_list %}
+                            <a href="{% url 'article:tags' tag.pk %}" style="color: #5d5d5d">
+                        <span class="tags">{{ tag.name }}</span>
+
+                            </a>
+                        {% endfor %}
+                        </div>
+
+                </div>

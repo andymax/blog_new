@@ -1,0 +1,21 @@
+{% load my_filters_and_tags %}
+
+<h3>评论列表，共 <span>{{ comment_count }}</span> 条评论</h3>
+<ul class="comment-list list-unstyled">
+  {% for comment in comment_list %}
+    <li class="comment-item">
+
+      <span class="nickname" style="color: cornflowerblue;">{{ comment.name }}</span>：于
+      <time class="submit-date" datetime="{{ comment.create_time | timesince_zh }}" style="color: limegreen;">{{ comment.create_time | timesince_zh }}</time>说：
+      <div class="text" style="margin: 20px auto;">
+        {{ comment.text | safe }}
+
+      </div>
+
+
+    <hr>
+    </li>
+  {% empty %}
+    暂无评论
+  {% endfor %}
+</ul>

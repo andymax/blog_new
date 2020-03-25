@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+    注册
+{% endblock %}
+{% block content %}
+        <div class="container">
+            <div class="row" style="margin-top: 30px">
+                <div class="col-xs-4 col-xs-offset-4">
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                    <h3 class="panel-title">注册</h3>
+                            </div>
+                            <div class="panel-body">
+                                    <form action="{% url 'article:register' %}" method="POST" style="margin-top: 20px">
+                        {% csrf_token %}
+                        {% for field in reg_form %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+
+                            {{ field }}
+                            <p class="text-danger">{{ field.errors.as_text }}</p>
+                        {% endfor %}
+                                    <span class="pull-left text-danger">{{ login_form.non_field_errors }}</span>
+                        <input type="submit" value="注册" style="margin-top: 20px;float: right" class="btn btn-primary">
+                        </form>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

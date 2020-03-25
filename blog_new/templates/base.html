@@ -1,0 +1,114 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="always" content="unsafe-url" />
+    <title>{% block title %}{% endblock title %}</title>
+     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/static/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/code.css">
+    <script src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'prism/prism.css' %}">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{# #}
+     <style>
+        .navbar-default{
+            background-color: white;
+            /*box-shadow: 1px 2px 2px #cccccc;*/
+            border-bottom: 1px #ededed solid;
+        }
+
+        .tags{
+            border: 1px solid #8c8c8c;
+            border-radius: 3px;
+            height: 25px;
+            width: 50px;
+            display: inline-block;
+            text-align: center;
+            margin: 10px 10px;
+        }
+        .col-xs-12 span:hover{
+            border: 1px solid #0f0f0f;
+            color: #0a001f;
+        }
+        .cate a{
+            text-decoration: none;
+            color: #0f0f0f;
+
+        }
+        .cate a:hover{
+            color: #2aabd2;
+        }
+
+        .title-new a{
+            color: #3e3e3e;
+            text-decoration: none;
+        }
+        .title-new a:hover{
+            color: #2aabd2;
+        }
+        .cate{
+            font-family: "Songti SC";
+            font-size: 16px;
+            text-decoration: none;
+            color: #0f0f0f;
+        }
+        .category-tgs a{
+            text-decoration: none;
+            color: #0f0f0f;
+
+        }
+        .category-tgs span{
+            float: right;
+            color: #919191
+        }
+        .read-more a{
+            text-decoration: none;
+            color: #3e3e3e;
+        }
+        .read-more a:hover{
+            color: #2aabd2;
+        }
+         li{
+             list-style: none;
+         }
+    </style>
+
+</head>
+
+<body>
+<!--header 开始-->
+
+{% include 'header.html' %}
+<!--header 结束-->
+
+<!--正文开始-->
+{% block content %}
+
+{% endblock content %}
+<!--正文结束-->
+<!--底部开始-->
+{% include 'footer.html' %}
+<!--底部结束-->
+<script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+
+<script src="/static/jquery/jquery-3.4.1.js"></script>
+
+<script>
+
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+<script>
+    $(".django-ckeditor-widget").removeAttr('style');
+
+</script>
+{% block comment_ajax %}
+{% endblock %}
+</body>
+</html>

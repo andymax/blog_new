@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load my_filters_and_tags %}
+{% block title %}
+    个人博客
+{% endblock %}
+
+{% block content %}
+<div class="container">
+        <div class="row">
+                <div class="col-md-8 col-sm-8" style="padding: 30px">
+                    <!--循环体-->
+                    {% for post in post_list %}
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <a href="{{ post.get_absolute_url }}"><img src="{{ post.avatar.url }}" class="img-responsive img-thumbnail"></a>
+                        </div>
+                        <div class="col-md-8 col-sm-8">
+                            <h4 class="title-new">
+                               <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </h4>
+                            <p class="tag">
+                                <i class="fa fa-calendar" aria-hidden="true" style="color: blueviolet"></i>
+                                <span>{{ post.create_time | timesince_zh }}</span>
+                                <i class="fa fa-tags" aria-hidden="true" style="margin-left: 20px;color:#0076cb "></i>
+                                <span>{{ post.category.name }}</span>
+                                <i class="fa fa-eye" aria-hidden="true" style="margin-left: 20px;color: lightseagreen"></i>
+                                <span>阅读量:（ {{ post.views }} ）</span>
+                                <i class="fa fa-commenting-o" aria-hidden="true" style="color: yellowgreen"></i>
+                        <span>评论:（ {% get_comment_count post %} ）</span>
+                            </p>
+                            <p class="content " style="color: #8c8c8c">
+                                {{ post.excerpt }}
+                            </p>
+
+                            <h5  class="read-more" style="text-align: right;">
+                                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                <a href="{{ post.get_absolute_url }}">阅读更多</a>
+
+                            </h5>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+
+
+
+                    <!--循环结束-->
+
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                {% if page_list.has_previous %}
+                                <a href="?page={{ page_list.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                                    {% else %}
+
+                                    <span aria-hidden="true">&laquo;</span>
+
+                                {% endif %}
+                            </li>
+                            {% for post_page in page_range %}
+                                {% if post_page == page_list.number %}
+                                    <li class="active" ><span>{{ post_page }}</span></li>
+                                {% else %}
+                                    {% if post_page == '...' %}
+                                        <li><span>{{ post_page }}</span></li>
+                                {% else %}
+                                    <li><a href="?page={{ post_page}}">{{ post_page }}</a></li>
+                                {% endif %}
+                                {% endif %}
+
+
+                                {% endfor %}
+                            <li>
+                                {% if page_list.has_next %}
+                                <a href="?page={{ page_list.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    {% else %}
+
+                                    <span aria-hidden="true">&raquo;</span>
+                                    {% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+            <div class="col-xs-4 visible-lg-block" style="background-color: #f8f9fa;padding: 40px">
+                <form action="{% url 'article:search' %}" method="get" role="search">
+                    {% csrf_token %}
+                    <input type="search" class="form-control"  name="search" placeholder="搜索" required>
+                </form>
+                {% show_categories %}
+                <!--热门文章-->
+                <div class="row hot-article-title">
+                    <div class="col-md-12">
+                        <h4 style="font-family: 'Songti SC';margin: 30px 10px;">
+                            热门文章
+                        </h4>
+                    </div>
+                </div>
+                {% show_recent_posts%}
+                <div class="row tag-title">
+                    <div class="col-md-12">
+                        <h4 style="font-family: 'Songti SC';margin: 30px 10px">
+                            标签云
+                        </h4>
+                    </div>
+
+
+
+                </div>
+                <!--标签-->
+
+                {% show_tags %}
+                <div class="row category-title">
+                    <h4 style="font-family: 'Songti SC';margin: 30px 25px">
+                        文章归档
+                    </h4>
+                </div>
+                <!--文章归档-->
+                {% show_archives %}
+            </div>
+        </div>
+
+</div>
+{% endblock %}

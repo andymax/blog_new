@@ -1,0 +1,51 @@
+<style>
+    #id_text{
+        height: 100px;
+        width: 700px;
+        outline: none;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+
+    }
+    #id_name{
+        text-decoration: none;
+        outline: none;
+    }
+    #id_email{
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        outline: none;
+    }
+
+</style>
+
+<hr>
+<div>
+<form action="{% url 'comment:comment' post.pk %}" method="post" class="comment-form">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-4">
+      <label for="{{ form.name.id_for_label }}">{{ form.name.label }}：</label>
+      {{ form.name }}
+      {{ form.name.errors }}
+    </div>
+    <div class="col-md-4">
+      <label for="{{ form.email.id_for_label }}">{{ form.email.label }}：</label>
+      {{ form.email }}
+      {{ form.email.errors }}
+    </div>
+    <div class="col-md-4">
+      <label for="{{ form.url.id_for_label }}">{{ form.url.label }}：</label>
+      {{ form.url }}
+      {{ form.url.errors }}
+    </div>
+    <div class="col-md-12" style="margin: 20px auto;">
+      <label for="{{ form.text.id_for_label }}"></label>
+      {{ form.text }}
+        {{ form.media }}
+      {{ form.text.errors }}
+      <button type="submit" class="btn btn-primary" style="margin: 20px auto;">提交评论</button>
+    </div>
+  </div>    <!-- row -->
+</form>
+    </div>

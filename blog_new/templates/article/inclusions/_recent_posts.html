@@ -1,0 +1,25 @@
+<!--文章目录-->
+{% load my_filters_and_tags %}
+{% for post in recent_post_list %}
+<div class="row hot-article" style="padding:10px ">
+                    <div class="col-xs-4">
+                        <a href="{{ post.get_absolute_url }}"><img src="{{ post.avatar.url }}" class="img-responsive img-thumbnail" style="width: 80px;height: 78px;"></a>
+                    </div>
+                    <div class="col-xs-8">
+                        <p class="cate"><a href="{{ post.get_absolute_url }}">
+                            {{ post.title }}
+                        </a>
+                        </p>
+                        <div style="font-size: 10px; width: 220px">
+                            <i class="fa fa-calendar" aria-hidden="true" style="color: blueviolet"></i>
+                            <span style="padding: 3px">{{ post.create_time | timesince_zh}}</span>
+                            <i class="fa fa-tags" aria-hidden="true" style="color:#0076cb"></i>
+                            <span style="padding: 3px">{{ post.category }}</span>
+                            <i class="fa fa-eye" aria-hidden="true"style="color: lightseagreen"></i>
+                            <span style="padding: 3px;">阅读量:{{ post.views }}</span>
+                            <i class="fa fa-commenting-o" aria-hidden="true" style="color: yellowgreen"></i>
+                        <span>评论:（ {% get_comment_count post %} ）</span>
+                        </div>
+                    </div>
+                </div>
+{% endfor %}

@@ -1,0 +1,23 @@
+<!--分类-->
+<div class="row category-title">
+                        <div class="col-md-12">
+                            <h4 style="font-family: 'Songti SC';margin: 30px auto">
+                                分类目录
+                            </h4>
+                        </div>
+                    <div class="col-md-12">
+                        <!--循环体-->
+                        {% for category in category_list %}
+                        <h5 class="category-tgs">
+                            <a href="{% url 'article:category' category.pk %}">
+                            {{ category.name }}
+                            <span >（ {{ category.num_posts }} ）</span>
+                            </a>
+                        </h5>
+
+                       <hr>
+                        {% endfor %}
+                        <!--循环体结束-->
+                    </div>
+
+                </div>

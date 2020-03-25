@@ -1,0 +1,18 @@
+<!--文章归档-->
+                <div class="col-md-12">
+                    <!--循环体-->
+                    {% for date in date_list %}
+                    <h5 class="category-tgs">
+                        <a href="{% url 'article:archive' date.year date.month %}">
+                           {{ date.year }} 年  {{ date.month }} 月
+
+                        </a>
+
+                    </h5>
+
+                    <hr>
+                        {% empty %}
+                        暂无归档
+                    {% endfor %}
+                    <!--循环体结束-->
+                </div>
