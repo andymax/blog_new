@@ -29,7 +29,7 @@ django-uuslug==1.1.8
 django-widget-tweaks==1.4.5
 djangorestframework==3.8.2
 gunicorn==19.9.0
-httplib2==0.11.3
+httplib2==0.18.0
 idna==2.7
 jieba==0.39
 jsonfield==2.0.2
