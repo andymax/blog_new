@@ -57,5 +57,5 @@ text-unidecode==1.2
 tornado==6.0.4
 Unidecode==1.0.22
 uritemplate==3.0.0
-urllib3==1.23
+urllib3==1.26.5
 Whoosh==2.7.4
